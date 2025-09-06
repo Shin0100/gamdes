@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://cw66lcl421agy"]
+
+[ext_resource type="Texture2D" uid="uid://twndiehytabc" path="res://Graphics/2024-12-12T19_17_07.png" id="1_f3sb7"]
+
+[node name="background" type="Node2D"]
+
+[node name="bg" type="Sprite2D" parent="."]
+texture = ExtResource("1_f3sb7")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 960, 540)

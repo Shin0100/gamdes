@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://dkjkgx2v7j5a"]
+
+[ext_resource type="Script" uid="uid://ckkn4b27rr0os" path="res://characters/player.gd" id="1_3eadt"]
+[ext_resource type="Texture2D" uid="uid://b8x261vhs4d2n" path="res://Graphics/PNG_Parts&Spriter_Animation/Ship6/Ship6.png" id="1_dnjla"]
+
+[node name="player" type="Area2D"]
+script = ExtResource("1_3eadt")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_dnjla")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-54, -19, -62, 31, -6, 37, 48, 23, 61, 3, 57, -17, 46, -31, -9, -38, -61, -35)
