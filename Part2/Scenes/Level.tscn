@@ -1,0 +1,58 @@
+[gd_scene load_steps=6 format=3 uid="uid://cfilivc4plcyn"]
+
+[ext_resource type="PackedScene" uid="uid://3fxa7jixnowc" path="res://Scenes/player.tscn" id="1_0ba56"]
+[ext_resource type="Script" uid="uid://denkxrcdxbmd1" path="res://Scenes/level.gd" id="1_vsvp5"]
+
+[sub_resource type="Curve2D" id="Curve2D_8rbpu"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -1009, -581, 0, 0, 0, 0, 1037, -594, 0, 0, 0, 0, 1029, 620, 0, 0, 0, 0, -1014, 599, 0, 0, 0, 0, -1019, -583)
+}
+point_count = 5
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0ba56"]
+size = Vector2(20, 1079)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vsvp5"]
+size = Vector2(1880, 20)
+
+[node name="Level" type="Node2D"]
+script = ExtResource("1_vsvp5")
+
+[node name="Player" parent="." instance=ExtResource("1_0ba56")]
+position = Vector2(0, 11)
+
+[node name="Path2D" type="Path2D" parent="."]
+curve = SubResource("Curve2D_8rbpu")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+unique_name_in_owner = true
+position = Vector2(-1009, -581)
+rotation = -0.00635378
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(3, 29)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_mask = 5
+
+[node name="Left" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-946, 29.5)
+shape = SubResource("RectangleShape2D_0ba56")
+
+[node name="Right" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(954, 29)
+shape = SubResource("RectangleShape2D_0ba56")
+
+[node name="Top" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(3, -499)
+shape = SubResource("RectangleShape2D_vsvp5")
+
+[node name="Bottom" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(3, 559)
+shape = SubResource("RectangleShape2D_vsvp5")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.489
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
